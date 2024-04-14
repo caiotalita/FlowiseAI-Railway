@@ -13,16 +13,20 @@ RUN apk add --no-cache chromium
 ENV PUPPETEER_SKIP_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
-# You can install a specific version like: flowise@1.0.0
+# Install Flowise
 RUN npm install -g flowise@latest
 
 WORKDIR /data
 
-# Set environment variables
-ENV PORT=80
+# Set environment variables for Flowise credentials
+ENV FLOWISE_USERNAME
+ENV FLOWISE_PASSWORD
+
+# Set environment variable for port
+ENV PORT=3000
 
 # Expose the specified port
 EXPOSE ${PORT}
 
 # Start the application with a delay
-CMD /bin/sh -c "sleep 3; flowise start"
+CMD /bin/sh -c "sleep 3; flowise start --FLOWISE_USERNAME=$FLOWISE_USERNAME --FLOWISE_PASSWORD=$FLOWISE_PASSWORD"
