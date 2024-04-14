@@ -19,8 +19,8 @@ RUN npm install -g flowise@latest
 WORKDIR /data
 
 # Set environment variables for Flowise credentials
-ENV FLOWISE_USERNAME
-ENV FLOWISE_PASSWORD
+ENV FLOWISE_USERNAME=123
+ENV FLOWISE_PASSWORD=123
 
 # Set environment variable for port
 ENV PORT=3000
